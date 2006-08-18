@@ -1,11 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0"?><project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.jivespaces</groupId>
   <artifactId>jivespaces</artifactId>
   <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
   <name>Jive Spaces</name>
+  <version>1.0-SNAPSHOT</version>
   <url>http://www.jivespaces.com</url>
   <inceptionYear>2006</inceptionYear>
   <developers>
@@ -30,14 +29,6 @@
     <name>Redv Soft</name>
     <url>http://www.redv.com/</url>
   </organization>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
   <build>
     <finalName>jivespaces</finalName>
     <plugins>
@@ -51,6 +42,40 @@
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>openid</groupId>
+      <artifactId>janrain-openid</artifactId>
+      <version>20060817</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/lib/Janrain-Openid-20060817.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>openid</groupId>
+      <artifactId>libidn</artifactId>
+      <version>0.6.3</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/lib/libidn-0.6.3.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.4</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jsp-api</artifactId>
+      <version>2.0</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
   <reporting>
     <plugins>
       <plugin>
