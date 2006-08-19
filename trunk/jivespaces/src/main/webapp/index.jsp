@@ -57,3 +57,5 @@
     </div>
   </body>
 </html>
+<%=request.getAttribute("space")%>
+<%=request.getQueryString()%>
