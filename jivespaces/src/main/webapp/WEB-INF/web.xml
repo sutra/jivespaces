@@ -1,26 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
          http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
-         version="2.4">
+	version="2.4">
 
-  <display-name>Jave Live Spaces</display-name>
-  <servlet>
-    <servlet-name>OpenIDConsumer</servlet-name>
-    <servlet-class>com.janrain.openid.example.ConsumerServlet</servlet-class>
-  </servlet>
+	<display-name>Jave Live Spaces</display-name>
 
-  <servlet-mapping>
-    <servlet-name>OpenIDConsumer</servlet-name>
-    <url-pattern>/submit</url-pattern>
-  </servlet-mapping>
+	<!-- 下面定义了两种从 URL 中获取 space name 的方法。
+		这种将空间名（Space name）隐藏在 URL 中的行为，我们称为空间名的 URL 重写
+		（Space name's URL rewriting）。 -->
+	<!-- 借助子域名进行空间名的 URL 重写（Space name's URL rewriting by subdomains）。 -->
+	<filter>
+		<description>
+			从 http://shutra.jivespaces.com/... 取出 shutra 作为 space name
+			存入 request 的属性中（属性名由 spaceNameAttributeName 指定）。
+		</description>
+		<filter-name>SpaceNameUrlRewriteBySubdomainsFilter</filter-name>
+		<filter-class>
+			com.jivespaces.web.filter.SpaceNameUrlRewriteBySubdomainsFilter
+		</filter-class>
+		<init-param>
+			<description>Space name 存入 request 的属性中时的属性名称。</description>
+			<param-name>spaceNameAttributeName</param-name>
+			<param-value>space</param-value>
+		</init-param>
+		<init-param>
+			<description>
+				Space name 的正则表达式，指示如何从 requestURL 中获取 space name 信息。
+			</description>
+			<param-name>spaceNamePattern</param-name>
+			<param-value>
+				(http|https)://([0-9a-zA-Z-]+).([0-9a-zA-Z-.]+)((:[\d]+)?)/jivespaces/(.*)
+			</param-value>
+		</init-param>
+		<init-param>
+			<description>指示正则表达式中 space name 组的索引。</description>
+			<param-name>spaceNameGroupIndex</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<init-param>
+			<description>
+				指示正则表达式中真实 requestUri（不含大头的斜线） 组的索引。
+			</description>
+			<param-name>
+				realUriWithoutPrefixedSlashGroupIndex
+			</param-name>
+			<param-value>6</param-value>
+		</init-param>
+	</filter>
+	<!-- 借助目录名进行空间名的 URL 重写（Space name's URL rewriting by subdirectories）。 -->
+	<filter>
+		<description>
+			从 /space/shutra/...（是如同 URL：
+			http://yourdomain.com/jivespaces/space/shutra/... 中的
+			RequestURI 部分） 中取出 shutra 作为 space name 存入 request 的属性中（属性名由
+			spaceNameAttributeName 指定）。
+		</description>
+		<filter-name>
+			SpaceNameUrlRewriteBySubdirectoriesFilter
+		</filter-name>
+		<filter-class>
+			com.jivespaces.web.filter.SpaceNameUrlRewriteBySubdirectoriesFilter
+		</filter-class>
+		<init-param>
+			<description>
+				Space name 的正则表达式，指示如何从 requestURI 中获取 space name 信息。
+			</description>
+			<param-name>spaceNamePattern</param-name>
+			<param-value>/space/([0-9a-zA-Z-]+)/(.*)</param-value>
+		</init-param>
+		<init-param>
+			<description>指示正则表达式中 space name 组的索引。</description>
+			<param-name>spaceNameGroupIndex</param-name>
+			<param-value>1</param-value>
+		</init-param>
+		<init-param>
+			<description>
+				指示正则表达式中真实 requestUri（不含大头的斜线） 组的索引。
+			</description>
+			<param-name>
+				realUriWithoutPrefixedSlashGroupIndex
+			</param-name>
+			<param-value>2</param-value>
+		</init-param>
+	</filter>
 
-  <servlet-mapping>
-    <servlet-name>OpenIDConsumer</servlet-name>
-    <url-pattern>/return</url-pattern>
-  </servlet-mapping>
+	<servlet>
+		<servlet-name>OpenIDConsumer</servlet-name>
+		<servlet-class>
+			com.janrain.openid.example.ConsumerServlet
+		</servlet-class>
+	</servlet>
 
+	<!-- 实际使用中只需要一种 Space name's URL rewriting 就可以了。 -->
+	<filter-mapping>
+		<filter-name>
+			SpaceNameUrlRewriteBySubdirectoriesFilter
+		</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
+	<servlet-mapping>
+		<servlet-name>OpenIDConsumer</servlet-name>
+		<url-pattern>/submit</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>OpenIDConsumer</servlet-name>
+		<url-pattern>/return</url-pattern>
+	</servlet-mapping>
 </web-app>
-

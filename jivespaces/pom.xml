@@ -3,7 +3,7 @@
   <groupId>com.jivespaces</groupId>
   <artifactId>jivespaces</artifactId>
   <packaging>war</packaging>
-  <name>Jive Spaces</name>
+  <name>Jave Live Spaces</name>
   <version>1.0-SNAPSHOT</version>
   <url>http://www.jivespaces.com</url>
   <inceptionYear>2006</inceptionYear>
@@ -50,6 +50,18 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.4</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jsp-api</artifactId>
+      <version>2.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>openid</groupId>
       <artifactId>janrain-openid</artifactId>
       <version>20060817</version>
@@ -64,16 +76,24 @@
       <systemPath>${basedir}/lib/libidn-0.6.3.jar</systemPath>
     </dependency>
     <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <version>2.4</version>
-      <scope>provided</scope>
+      <groupId>net.java.dev.urlrewrite</groupId>
+      <artifactId>urlrewritefilter</artifactId>
+      <version>3.0</version>
     </dependency>
     <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jsp-api</artifactId>
-      <version>2.0</version>
-      <scope>provided</scope>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.13</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.1</version>
     </dependency>
   </dependencies>
   <reporting>
