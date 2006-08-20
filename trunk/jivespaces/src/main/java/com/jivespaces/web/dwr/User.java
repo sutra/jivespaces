@@ -16,4 +16,5 @@ public class User {
 		return SpaceNameUrlRewriteFilter.getSpaceName(WebContextFactory.get()
 				.getHttpServletRequest());
 	}
+
 }
