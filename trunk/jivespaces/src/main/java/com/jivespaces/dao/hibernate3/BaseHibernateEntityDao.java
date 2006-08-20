@@ -1,5 +1,5 @@
 /**
- * Created on 2006-8-20 下午09:27:57
+ * Created on 2006-8-20 21:27:57
  */
 package com.jivespaces.dao.hibernate3;
 
@@ -10,7 +10,8 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 /**
  * @author Shutra
- * @see http://www.blogjava.net/calvin/archive/2006/04/28/43830.html
+ * @see <a
+ *      href="http://www.blogjava.net/calvin/archive/2006/04/28/43830.html">Java5泛型的用法，T.class的获取和为擦拭法站台</a>
  */
 public abstract class BaseHibernateEntityDao<T> extends HibernateDaoSupport {
 	private Class<T> entityClass;
