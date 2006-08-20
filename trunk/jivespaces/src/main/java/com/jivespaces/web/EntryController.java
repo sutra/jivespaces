@@ -7,13 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+
+import com.jivespaces.domain.Entry;
 
 /**
  * @author Shutra
  * 
  */
-public class EntryController implements Controller {
+public class EntryController extends BaseController {
 
 	/*
 	 * (non-Javadoc)
@@ -21,10 +22,12 @@ public class EntryController implements Controller {
 	 * @see org.springframework.web.servlet.mvc.Controller#handleRequest(javax.servlet.http.HttpServletRequest,
 	 *      javax.servlet.http.HttpServletResponse)
 	 */
-	public ModelAndView handleRequest(HttpServletRequest arg0,
-			HttpServletResponse arg1) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public ModelAndView handleRequest(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		String entryId = request.getParameter("entryId");
+		Entry entry = jiveSpacesFacade.getEntry(entryId);
+		request.setAttribute("entry", entry);
+		return new ModelAndView("entry");
 	}
 
 }
