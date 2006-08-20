@@ -10,19 +10,25 @@
 		http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
 	default-lazy-init="true">
+	<bean id="listController"
+		class="com.jivespaces.web.ListController">
+		<property name="jiveSpacesFacade" ref="jiveSpacesFacade" />
+	</bean>
+	<bean id="entryController"
+		class="com.jivespaces.web.EntryController">
+		<property name="jiveSpacesFacade" ref="jiveSpacesFacade" />
+	</bean>
 	<!-- URL Mapping -->
 	<bean id="secureHandlerMapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="urlMap">
 			<map>
-				<!-- 
-					<entry key="/list.aspx">
+				<entry key="/list.aspx">
 					<ref local="listController" />
-					</entry>
-					<entry key="/entry.aspx">
+				</entry>
+				<entry key="/entry.aspx">
 					<ref local="entryController" />
-					</entry>
-				-->
+				</entry>
 			</map>
 		</property>
 	</bean>
