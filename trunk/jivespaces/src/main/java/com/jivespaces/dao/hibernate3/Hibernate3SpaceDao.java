@@ -5,8 +5,6 @@ package com.jivespaces.dao.hibernate3;
 
 import java.util.List;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import com.jivespaces.dao.SpaceDao;
 import com.jivespaces.domain.Space;
 import com.jivespaces.domain.User;
@@ -15,7 +13,8 @@ import com.jivespaces.domain.User;
  * @author Shutra
  * 
  */
-public class Hibernate3SpaceDao extends HibernateDaoSupport implements SpaceDao {
+public class Hibernate3SpaceDao extends BaseHibernateEntityDao<Space> implements
+		SpaceDao {
 
 	/*
 	 * (non-Javadoc)
@@ -23,7 +22,7 @@ public class Hibernate3SpaceDao extends HibernateDaoSupport implements SpaceDao 
 	 * @see com.jivespaces.dao.SpaceDao#getSpace(java.lang.String)
 	 */
 	public Space getSpace(String id) {
-		return (Space) getHibernateTemplate().get(Space.class, id);
+		return get(id);
 	}
 
 	/*

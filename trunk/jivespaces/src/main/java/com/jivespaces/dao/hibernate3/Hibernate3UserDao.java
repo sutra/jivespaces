@@ -5,8 +5,6 @@ package com.jivespaces.dao.hibernate3;
 
 import java.util.List;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import com.jivespaces.dao.UserDao;
 import com.jivespaces.domain.User;
 
@@ -14,7 +12,8 @@ import com.jivespaces.domain.User;
  * @author Shutra
  * 
  */
-public class Hibernate3UserDao extends HibernateDaoSupport implements UserDao {
+public class Hibernate3UserDao extends BaseHibernateEntityDao<User> implements
+		UserDao {
 
 	/*
 	 * (non-Javadoc)
@@ -22,7 +21,7 @@ public class Hibernate3UserDao extends HibernateDaoSupport implements UserDao {
 	 * @see com.jivespaces.dao.UserDao#getUser(java.lang.String)
 	 */
 	public User getUser(String id) {
-		return (User) getHibernateTemplate().get(User.class, id);
+		return get(id);
 	}
 
 	/*
