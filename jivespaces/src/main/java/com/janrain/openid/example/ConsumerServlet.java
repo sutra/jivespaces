@@ -17,7 +17,6 @@ import com.janrain.openid.consumer.ErrorResponse;
 import com.janrain.openid.consumer.Response;
 import com.janrain.openid.consumer.StatusCode;
 import com.janrain.openid.store.MemoryStore;
-import com.jivespaces.web.util.WebUtils;
 
 /*
  * This class is an example of a servlet using the com.janrain.openid package
@@ -148,8 +147,7 @@ public class ConsumerServlet extends HttpServlet {
 			port = ":" + req.getServerPort();
 		}
 		String trustRoot = "http://" + req.getServerName() + port + "/";
-		// String cp = req.getContextPath();
-		String cp = WebUtils.getContextPath(req);
+		String cp = req.getContextPath();
 		if (!cp.equals("")) {
 			cp = cp.substring(1) + "/";
 		}

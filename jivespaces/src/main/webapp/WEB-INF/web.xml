@@ -50,6 +50,7 @@
 		</init-param>
 	</filter>
 	<!-- 借助目录名进行空间名的 URL 重写（Space name's URL rewriting by subdirectories）。 -->
+	<!-- 由于该方式对 view 层侵入性太大，暂不支持。 -->
 	<filter>
 		<description>
 			从 /space/shutra/...（是如同 URL：
@@ -77,7 +78,7 @@
 		</init-param>
 		<init-param>
 			<description>
-				指示正则表达式中真实 requestUri（不含大头的斜线） 组的索引。
+				指示正则表达式中真实 requestUri（不含打头的斜线） 组的索引。
 			</description>
 			<param-name>
 				realUriWithoutPrefixedSlashGroupIndex
@@ -95,9 +96,7 @@
 
 	<!-- 实际使用中只需要一种 Space name's URL rewriting 就可以了。 -->
 	<filter-mapping>
-		<filter-name>
-			SpaceNameUrlRewriteBySubdirectoriesFilter
-		</filter-name>
+		<filter-name>SpaceNameUrlRewriteBySubdomainsFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
