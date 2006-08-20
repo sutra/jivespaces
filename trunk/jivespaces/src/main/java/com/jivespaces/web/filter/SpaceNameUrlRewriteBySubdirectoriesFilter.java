@@ -3,56 +3,38 @@
  */
 package com.jivespaces.web.filter;
 
-import java.io.IOException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 借助目录名进行空间名的 URL 重写（Space name's URL rewriting by subdirectories）。
+ * <p>
+ * 从 /space/shutra/...（是如同 URL：
+ * http://yourdomain.com/jivespaces/space/shutra/... 中的 RequestURI 部分） 中取出
+ * shutra 作为 space name 存入 request 的属性中（属性名由 spaceNameAttributeName 指定）。
+ * </p>
+ * 
  * @author Shutra
  * 
  */
-public class SpaceNameUrlRewriteBySubdirectoriesFilter extends SpaceNameUrlRewriteFilter {
+public class SpaceNameUrlRewriteBySubdirectoriesFilter extends
+		SpaceNameUrlRewriteFilter {
 	public SpaceNameUrlRewriteBySubdirectoriesFilter() {
 		this.spaceNamePattern = Pattern.compile("/space/([0-9a-zA-Z-]+)/(.*)");
 		this.spaceNameGroupIndex = 1;
 		this.realUriWithoutPrefixedSlashGroupIndex = 2;
+		isSpaceNameRewritingBySubdirectories = true;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest,
-	 *      javax.servlet.ServletResponse, javax.servlet.FilterChain)
+	 * @see com.jivespaces.web.filter.SpaceNameUrlRewriteFilter#getUrl(javax.servlet.http.HttpServletRequest)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest req = (HttpServletRequest) request;
-		String requestURI = req.getRequestURI();
-		log.debug("requestURI: " + requestURI);
-		String spaceName = null;
-		String realUri = null;
-		Matcher matcher = this.spaceNamePattern.matcher(requestURI);
-		if (matcher.find()) {
-			spaceName = matcher.group(this.spaceNameGroupIndex).toLowerCase();
-			realUri = "/"
-					+ matcher.group(this.realUriWithoutPrefixedSlashGroupIndex);
-			log.debug("spaceName: " + spaceName);
-			log.debug("realUri: " + realUri);
-		}
-		if (spaceName != null && realUri != null) {
-			req.setAttribute(this.spaceNameAttributeName, spaceName);
-			this.filterConfig.getServletContext().getRequestDispatcher(realUri)
-					.forward(request, response);
-		} else {
-			this.filterConfig.getServletContext().getRequestDispatcher("/")
-					.forward(request, response);
-		}
+	@Override
+	protected CharSequence getUrl(HttpServletRequest httpServletRequest) {
+		return httpServletRequest.getRequestURI();
 	}
 
 }
