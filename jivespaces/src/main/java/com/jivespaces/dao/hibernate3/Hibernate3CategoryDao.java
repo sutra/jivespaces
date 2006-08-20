@@ -3,8 +3,6 @@
  */
 package com.jivespaces.dao.hibernate3;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import com.jivespaces.dao.CategoryDao;
 import com.jivespaces.domain.Category;
 
@@ -12,8 +10,8 @@ import com.jivespaces.domain.Category;
  * @author Shutra
  * 
  */
-public class Hibernate3CategoryDao extends HibernateDaoSupport implements
-		CategoryDao {
+public class Hibernate3CategoryDao extends BaseHibernateEntityDao<Category>
+		implements CategoryDao {
 
 	/*
 	 * (non-Javadoc)
@@ -21,7 +19,7 @@ public class Hibernate3CategoryDao extends HibernateDaoSupport implements
 	 * @see com.jivespaces.dao.CategoryDao#getCategory(java.lang.String)
 	 */
 	public Category getCategory(String id) {
-		return (Category) getHibernateTemplate().get(Category.class, id);
+		return this.get(id);
 	}
 
 }

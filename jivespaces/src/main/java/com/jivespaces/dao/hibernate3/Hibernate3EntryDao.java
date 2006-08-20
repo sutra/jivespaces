@@ -3,8 +3,6 @@
  */
 package com.jivespaces.dao.hibernate3;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import com.jivespaces.dao.EntryDao;
 import com.jivespaces.domain.Entry;
 
@@ -12,7 +10,8 @@ import com.jivespaces.domain.Entry;
  * @author Shutra
  * 
  */
-public class Hibernate3EntryDao extends HibernateDaoSupport implements EntryDao {
+public class Hibernate3EntryDao extends BaseHibernateEntityDao<Entry> implements
+		EntryDao {
 
 	/*
 	 * (non-Javadoc)
@@ -20,7 +19,7 @@ public class Hibernate3EntryDao extends HibernateDaoSupport implements EntryDao 
 	 * @see com.jivespaces.dao.EntryDao#getEntry(java.lang.String)
 	 */
 	public Entry getEntry(String id) {
-		return (Entry) getHibernateTemplate().get(Entry.class, id);
+		return get(id);
 	}
 
 }
