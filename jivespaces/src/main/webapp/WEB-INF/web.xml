@@ -211,7 +211,7 @@
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>UrlRewriteFilter</filter-name>
-		<url-pattern>*.entry</url-pattern>
+		<url-pattern>/entry/*</url-pattern>
 	</filter-mapping>
 
 	<servlet-mapping>
@@ -231,6 +231,6 @@
 
 	<servlet-mapping>
 		<servlet-name>jivespaces</servlet-name>
-		<url-pattern>*.aspx</url-pattern>
+		<url-pattern>*.jhtml</url-pattern>
 	</servlet-mapping>
 </web-app>
