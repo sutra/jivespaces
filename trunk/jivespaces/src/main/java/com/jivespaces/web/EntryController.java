@@ -24,8 +24,8 @@ public class EntryController extends BaseController {
 	 */
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		String entryId = request.getParameter("entryId");
-		Entry entry = jiveSpacesFacade.getEntry(entryId);
+		String id = request.getParameter("id");
+		Entry entry = jiveSpacesFacade.getEntry(id);
 		request.setAttribute("entry", entry);
 		return new ModelAndView("entry");
 	}

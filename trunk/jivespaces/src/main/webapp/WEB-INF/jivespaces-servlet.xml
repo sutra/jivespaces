@@ -23,10 +23,10 @@
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="urlMap">
 			<map>
-				<entry key="/list.aspx">
+				<entry key="/list.jhtml">
 					<ref local="listController" />
 				</entry>
-				<entry key="/entry.aspx">
+				<entry key="/entry.jhtml">
 					<ref local="entryController" />
 				</entry>
 			</map>

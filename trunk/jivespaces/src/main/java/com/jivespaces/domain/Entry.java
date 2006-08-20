@@ -28,24 +28,14 @@ public class Entry implements Serializable {
 
 	private Date publishedDate;
 
-	private String body;
+	private String content;
 
 	private Set<Category> categories;
 
 	/**
-	 * @return the body
+	 * 别名。某个空间某一天不能有相同的别名。
 	 */
-	public String getBody() {
-		return body;
-	}
-
-	/**
-	 * @param body
-	 *            the body to set
-	 */
-	public void setBody(String body) {
-		this.body = body;
-	}
+	private String name;
 
 	/**
 	 * @return the categories
@@ -135,6 +125,36 @@ public class Entry implements Serializable {
 	 */
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	/**
+	 * @return the content
+	 */
+	public String getContent() {
+		return content;
+	}
+
+	/**
+	 * @param content
+	 *            the content to set
+	 */
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name
+	 *            the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
