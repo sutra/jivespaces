@@ -76,11 +76,6 @@
       <systemPath>${basedir}/lib/libidn-0.6.3.jar</systemPath>
     </dependency>
     <dependency>
-      <groupId>net.java.dev.urlrewrite</groupId>
-      <artifactId>urlrewritefilter</artifactId>
-      <version>3.0</version>
-    </dependency>
-    <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <version>1.1</version>
