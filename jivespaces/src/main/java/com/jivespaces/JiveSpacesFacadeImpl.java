@@ -15,7 +15,7 @@ import com.jivespaces.domain.Space;
 import com.jivespaces.domain.User;
 
 /**
- * @author Shutra
+ * @author <a href="mailto:zhoushuqun@gmail.com">Shutra</a>
  * 
  */
 public class JiveSpacesFacadeImpl implements JiveSpacesFacade {

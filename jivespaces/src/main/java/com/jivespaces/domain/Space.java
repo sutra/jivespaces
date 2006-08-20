@@ -24,6 +24,10 @@ public class Space implements Serializable {
 
 	private String displayName;
 
+	private String keywords;
+
+	private String description;
+
 	/**
 	 * @return the owner
 	 */
@@ -82,6 +86,36 @@ public class Space implements Serializable {
 	 */
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description
+	 *            the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the keywords
+	 */
+	public String getKeywords() {
+		return keywords;
+	}
+
+	/**
+	 * @param keywords
+	 *            the keywords to set
+	 */
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
 	}
 
 }
