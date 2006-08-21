@@ -1,9 +1,9 @@
 /**
  * <pre>
  * Copyright:		Copyright(C) 2006, jivespaces.com
- * Filename:		BaseDomain.java
- * Class:			BaseDomain
- * Date:			2006-8-21 下午09:54:02
+ * Filename:		TagDao.java
+ * Class:			TagDao
+ * Date:			2006-8-21 下午10:08:23
  * Author:			<a href="mailto:rory.cn@gmail.com">somebody</a>
  * Description:		
  *
@@ -17,25 +17,16 @@
  *
  * </pre>
  **/
-package com.jivespaces.domain;
+package com.jivespaces.dao;
 
-import java.io.Serializable;
+import com.jivespaces.domain.Tag;
 
 /**
  * @author <a href="mailto:rory.cn@gmail.com">somebody</a>
- * @since 2006-8-21 下午09:54:02
- * @version $Id BaseDomain.java$
+ * @since 2006-8-21 下午10:08:23
+ * @version $Id TagDao.java$
  */
-public abstract class BaseDomain implements Serializable {
-	private String id;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
+public interface TagDao extends BaseDao {
 	
-	
+	public Tag getTag(String id);
 }
