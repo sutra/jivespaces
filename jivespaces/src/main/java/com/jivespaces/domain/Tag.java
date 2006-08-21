@@ -1,6 +1,6 @@
 /**
  * <pre>
- * Copyright:		Copyright(C) 2006, jivespaces.org
+ * Copyright:		Copyright(C) 2006, jivespaces.com
  * Filename:		Tag.java
  * Class:			Tag
  * Date:			2006-8-21 下午09:54:53

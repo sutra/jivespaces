@@ -1,9 +1,9 @@
 /**
  * <pre>
  * Copyright:		Copyright(C) 2006, jivespaces.com
- * Filename:		BaseDomain.java
- * Class:			BaseDomain
- * Date:			2006-8-21 下午09:54:02
+ * Filename:		Hibernate3TagDao.java
+ * Class:			Hibernate3TagDao
+ * Date:			2006-8-21 下午10:10:29
  * Author:			<a href="mailto:rory.cn@gmail.com">somebody</a>
  * Description:		
  *
@@ -17,24 +17,23 @@
  *
  * </pre>
  **/
-package com.jivespaces.domain;
+package com.jivespaces.dao.hibernate3;
 
-import java.io.Serializable;
+import com.jivespaces.dao.TagDao;
+import com.jivespaces.domain.Tag;
 
 /**
  * @author <a href="mailto:rory.cn@gmail.com">somebody</a>
- * @since 2006-8-21 下午09:54:02
- * @version $Id BaseDomain.java$
+ * @since 2006-8-21 下午10:10:29
+ * @version $Id Hibernate3TagDao.java$
  */
-public abstract class BaseDomain implements Serializable {
-	private String id;
+public class Hibernate3TagDao extends BaseHibernateEntityDao<Tag> implements TagDao {
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
+	/* (non-Javadoc)
+	 * @see com.jivespaces.dao.TagDao#getTag(java.lang.String)
+	 */
+	public Tag getTag(String id) {
+		return get(id);
 	}
 	
 	
