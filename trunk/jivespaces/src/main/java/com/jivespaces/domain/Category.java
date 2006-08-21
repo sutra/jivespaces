@@ -3,13 +3,12 @@
  */
 package com.jivespaces.domain;
 
-import java.io.Serializable;
 
 /**
  * @author Shutra
  * 
  */
-public class Category implements Serializable {
+public class Category extends BaseDomain {
 
 	/**
 	 * 
@@ -18,24 +17,7 @@ public class Category implements Serializable {
 
 	private Space space;
 
-	private String id;
-
 	private String name;
-
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the name

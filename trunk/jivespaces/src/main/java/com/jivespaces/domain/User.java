@@ -3,39 +3,22 @@
  */
 package com.jivespaces.domain;
 
-import java.io.Serializable;
 
 /**
  * @author Shutra
  * 
  */
-public class User implements Serializable {
+public class User extends BaseDomain {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5466698209227153700L;
 
-	private String id;
-
 	private String openId;
 
 	private String displayName;
 
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the openId

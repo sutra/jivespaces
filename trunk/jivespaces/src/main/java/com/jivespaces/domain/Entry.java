@@ -3,7 +3,6 @@
  */
 package com.jivespaces.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -11,7 +10,7 @@ import java.util.Set;
  * @author Shutra
  * 
  */
-public class Entry implements Serializable {
+public class Entry extends BaseDomain{
 
 	/**
 	 * 
@@ -19,8 +18,6 @@ public class Entry implements Serializable {
 	private static final long serialVersionUID = 8130825998272869627L;
 
 	private Space space;
-
-	private String id;
 
 	private String title;
 
@@ -30,12 +27,22 @@ public class Entry implements Serializable {
 
 	private String content;
 
-	private Set<Category> categories;
-
 	/**
 	 * 别名。某个空间某一天不能有相同的别名。
 	 */
 	private String name;
+	
+	private Set<Category> categories;
+
+	private Set<Tag> tags;
+	
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
+	}
 
 	/**
 	 * @return the categories
@@ -65,21 +72,6 @@ public class Entry implements Serializable {
 	 */
 	public void setExcerpt(String excerpt) {
 		this.excerpt = excerpt;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	/**
@@ -126,7 +118,8 @@ public class Entry implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
+	
+	
 	/**
 	 * @return the content
 	 */
@@ -156,5 +149,12 @@ public class Entry implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return super.toString();
+	}
 }
