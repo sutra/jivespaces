@@ -2,11 +2,10 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.jivespaces.domain">
-	<class name="User" table="SPACE_USER">
+	<class name="Tag" table="SPACE_Tag">
 		<id name="id" unsaved-value="null" type="java.lang.String" length="32">
 			<generator class="uuid" />
 		</id>
-		<property name="openId" length="300"/>
-		<property name="displayName" length="400"/>
+		<property name="name" type="string" length="100" not-null="true"/>
 	</class>
 </hibernate-mapping>

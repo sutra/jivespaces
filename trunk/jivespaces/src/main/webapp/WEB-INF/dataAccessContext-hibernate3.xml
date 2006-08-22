@@ -29,12 +29,14 @@
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="properties">
 			<props>
-				<prop key="hibernate.dialect">
-					${hibernate.dialect}
-				</prop>
-				<prop key="hibernate.show_sql">
-					${hibernate.show_sql}"
-				</prop>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="jdbc.fetch_size">50</prop>
+				<prop key="jdbc.batch_size">25</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.query.substitutions">true 1,false 0</prop>
 			</props>
 		</property>
 	</bean>
@@ -42,37 +44,34 @@
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties" ref="hibernateProperties" />
-		<property name="mappingResources">
+		<property name="mappingDirectoryLocations">
 			<list>
-				<value>
-					com/jivespaces/dao/hibernate3/Category.hbm.xml
-				</value>
-				<value>
-					com/jivespaces/dao/hibernate3/Entry.hbm.xml
-				</value>
-				<value>
-					com/jivespaces/dao/hibernate3/Space.hbm.xml
-				</value>
-				<value>
-					com/jivespaces/dao/hibernate3/User.hbm.xml
-				</value>
+				<value>classpath:com/jivespaces/dao/hibernate3</value>
 			</list>
 		</property>
 	</bean>
+	
 	<bean id="categoryDao"
 		class="com.jivespaces.dao.hibernate3.Hibernate3CategoryDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
 	<bean id="entryDao"
 		class="com.jivespaces.dao.hibernate3.Hibernate3EntryDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
 	<bean id="spaceDao"
 		class="com.jivespaces.dao.hibernate3.Hibernate3SpaceDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
 	<bean id="userDao"
 		class="com.jivespaces.dao.hibernate3.Hibernate3UserDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="tagDao" class="com.jivespaces.dao.hibernate3.Hibernate3TagDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 </beans>
