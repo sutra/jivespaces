@@ -1,12 +1,25 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.jivespaces.domain">
-	<class name="Entry" table="ENTRY">
-		<id name="id" column="ID">
+	<class name="Entry" table="SPACE_ENTRY">
+		<id name="id" unsaved-value="null" type="java.lang.String" length="32">
 			<generator class="uuid" />
 		</id>
+		<many-to-one name="space" class="Space" column="spaceId"/>
+		<property name="title" length="200"/>
+		<property name="excerpt" length="200"/>
+		<property name="publishedDate"/>
+		<property name="content" type="text"/>
+		<property name="name" length="200"/>
+		<set name="categories" lazy="true" table="SPACE_ENTRY_CATEGORY" cascade="none">
+			<key column="entryId"/>
+			<many-to-many column="categoryId" class="Category"/>
+		</set>
+		
+		<set name="tags" lazy="true" table="SPACE_ENTRY_TAG" cascade="none">
+			<key column="entryId"/>
+			<many-to-many column="tagId" class="Tag"/>
+		</set>
 	</class>
 </hibernate-mapping>
