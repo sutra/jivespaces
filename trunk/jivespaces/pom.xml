@@ -20,6 +20,16 @@
         <role>Developer</role>
       </roles>
     </developer>
+    <developer>
+    	<id>yedingfu</id>
+    	<name>Rory Ye</name>
+    	<email>rory.cn@gmail.com</email>
+    	<organization>jdkcn.com</organization>
+    	<organizationUrl>http://jdkcn.com</organizationUrl>
+    	<roles>
+    		<role>Developer</role>
+    	</roles>
+    </developer>
   </developers>
   <scm>
     <connection>scm:svn:http://jivespaces.googlecode.com/svn/trunk/</connection>

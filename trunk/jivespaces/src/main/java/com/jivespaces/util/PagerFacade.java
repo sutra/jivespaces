@@ -28,7 +28,7 @@ public abstract class PagerFacade {
     private static Log log = LogFactory.getLog(PagerFacade.class);  
     
     /**
-     * ��ȡ Offset 
+     * Offset 
      * @return offset 
      */
     public static int getOffset(String pagerOffset) {
@@ -53,8 +53,8 @@ public abstract class PagerFacade {
     }
     
     /**
-     * ��ȡ maxPageItems ֵ
-     * @return maxPageItems ֵ
+     * maxPageItems
+     * @return maxPageItems
      */
     public static int getMaxPageItems() {
         int interval = PaginationSupport.DEFAULT_MAX_PAGE_ITEMS;
@@ -64,8 +64,8 @@ public abstract class PagerFacade {
     
     
     /**
-     * ��ȡ DEFAULT_MAX_PAGE_ITEMS ֵ
-     * @return DEFAULT_MAX_INDEX_PAGES ֵ
+     * DEFAULT_MAX_PAGE_ITEMS
+     * @return DEFAULT_MAX_INDEX_PAGES
      */
     public static int getMaxIndexPages() {
         int maxIndexPages = PaginationSupport.DEFAULT_MAX_INDEX_PAGES;
