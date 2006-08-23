@@ -39,6 +39,6 @@
 	<!-- 以别名的方式访问 entry。 -->
 	<rule>
 		<from>/post/([0-9]+)/([0-9]+)/([0-9]+)/(.*)</from>
-		<to>/entry.jhtml?year=$1&$month=$2&date=$3&name=$4</to>
+		<to>/entry.jhtml?year=$1&amp;$month=$2&amp;date=$3&amp;name=$4</to>
 	</rule>
 </urlrewrite>
