@@ -19,6 +19,8 @@ import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.jivespaces.domain.Space;
+
 /**
  * 
  * @author Shutra
@@ -30,7 +32,7 @@ public abstract class SpaceNameUrlRewriteFilter implements Filter {
 
 	protected FilterConfig filterConfig;
 
-	protected static String spaceNameAttributeName = "space";
+	protected static String spaceNameAttributeName = "com.jivespaces.web.filter.SpaceNameUrlRewriteFilter.spaceNameAttributeName";
 
 	protected static boolean isSpaceNameRewritingBySubdirectories = false;
 
@@ -69,11 +71,21 @@ public abstract class SpaceNameUrlRewriteFilter implements Filter {
 			log.debug("spaceName: " + spaceName);
 			log.debug("realUri: " + realUri);
 		}
+
 		if (spaceName != null && realUri != null) {
 			req.setAttribute(spaceNameAttributeName, spaceName);
-			this.filterConfig.getServletContext().getRequestDispatcher(realUri)
-					.forward(request, response);
+			// TODO.
+			Space space = new Space();
+			space.setName(spaceName);
+			space.setDisplayName("test..." + spaceName);
+			req.setAttribute("space", space);
+
+			// this.filterConfig.getServletContext().getRequestDispatcher(realUri)
+			// .forward(request, response);
+
+			chain.doFilter(request, response);
 		} else {
+			// TODO: display the error page.
 			this.filterConfig.getServletContext().getRequestDispatcher("/")
 					.forward(request, response);
 		}

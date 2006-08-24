@@ -10,7 +10,7 @@
 			content="application/xhtml-xml; charset=UTF-8" />
 		<meta name="robots" content="all" />
 		<meta name="keywords" content="${space.keywords}" />
-		<meta name="description" content="${space.discription}" />
+		<meta name="description" content="${space.description}" />
 		<jsp:directive.include file="includes/scripts.jsp" />
 	</head>
 	<body>
