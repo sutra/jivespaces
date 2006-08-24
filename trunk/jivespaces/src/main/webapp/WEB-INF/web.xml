@@ -9,7 +9,7 @@
 
 	<context-param>
 		<description>
-			该 web application 的根目录的绝对文件路径作为属性保存在 System 的属性列表中。该属性的名字，由
+			该 web application 的根目录的绝对文件路径作为属性保存在 System 的属性列表中。 该属性的名字，由
 			web.xml 文件中的名为 "webAppRootKey" 的参数值指出。如果不在 web.xml 中定义
 			webAppRootKey 参数，那么属性名就是缺省的 "webapp.root".
 		</description>
@@ -223,9 +223,14 @@
 		<filter-name>SpaceNameUrlRewriteBySubdomainsFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<!-- Important: This `UrlRewriteFilter' filter-mapping must be the last one in the filter-mappings queue. -->
 	<filter-mapping>
 		<filter-name>UrlRewriteFilter</filter-name>
 		<url-pattern>/entry/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<url-pattern>/post/*</url-pattern>
 	</filter-mapping>
 
 	<servlet-mapping>
