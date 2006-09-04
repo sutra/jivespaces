@@ -3,6 +3,8 @@
  */
 package com.jivespaces.dao;
 
+import org.hibernate.criterion.DetachedCriteria;
+
 import com.jivespaces.domain.Entry;
 import com.jivespaces.util.PaginationSupport;
 
@@ -10,28 +12,16 @@ import com.jivespaces.util.PaginationSupport;
  * @author Shutra
  * 
  */
-public interface EntryDao {
+public interface EntryDao extends BaseDao {
 	Entry getEntry(String id);
 	
 	/**
-	 * 分页查找Entry
-	 * @param entry 查询条件
-	 * @param pageSize 分页大小
-	 * @param startIndex 记录开始位置
-	 * @return 分页工具类
-	 * @see PaginationSupport
-	 * @author <a href="mailto:rory.cn@gmail.com">somebody</a>
+	 * 
+	 * @param detachedCriteria
+	 * @param pageSize
+	 * @param startIndex
+	 * @return
 	 */
-	public PaginationSupport getEntryList(Entry entry, int pageSize, int startIndex);
+	public PaginationSupport<Entry> findPageByCriteria(final DetachedCriteria detachedCriteria, final int pageSize, final int startIndex);
 	
-	/**
-	 * 根据TagName查找Entry
-	 * @param tagName Tag名称
-	 * @param pageSize 分页大小
-	 * @param startIndex 记录开始位置
-	 * @return 分页工具类
-	 * @see PaginationSupport
-	 * @author <a href="mailto:rory.cn@gmail.com">somebody</a>
-	 */
-	public PaginationSupport getEntryListByTag(String tagName, int pageSize, int startIndex);
 }

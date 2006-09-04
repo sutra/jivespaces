@@ -9,6 +9,6 @@ import com.jivespaces.domain.Category;
  * @author Shutra
  * 
  */
-public interface CategoryDao {
+public interface CategoryDao extends BaseDao{
 	Category getCategory(String id);
 }

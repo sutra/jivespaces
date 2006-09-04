@@ -94,6 +94,7 @@ public abstract class HibernateUtils {
 			final DetachedCriteria criteria, final int firstResult, final int maxResults) throws DataAccessException {
 
 		return (PaginationSupport) hibernateTemplate.execute(new HibernateCallback() {
+			@SuppressWarnings("unchecked")
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				Criteria executableCriteria = criteria.getExecutableCriteria(session);
 

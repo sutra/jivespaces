@@ -12,7 +12,7 @@ import com.jivespaces.domain.User;
  * @author Shutra
  * 
  */
-public interface SpaceDao {
+public interface SpaceDao extends BaseDao{
 	Space getSpace(String id);
 
 	Space getSpaceByName(String name);
