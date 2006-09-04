@@ -39,7 +39,7 @@ public abstract class AbstractTestBean extends	AbstractTransactionalSpringContex
 	 */
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "spring/global-test.xml", "spring/*-context.xml" };
+		return new String[] { "src/main/webapp/WEB-INF/applicationContext.xml", "src/main/webapp/WEB-INF/dataAccessContext-hibernate3.xml" };
 	}
 	
 	@Override

@@ -3,6 +3,8 @@
  */
 package com.jivespaces.dao;
 
+import java.io.Serializable;
+
 import org.hibernate.criterion.DetachedCriteria;
 
 import com.jivespaces.domain.Entry;
@@ -24,4 +26,11 @@ public interface EntryDao extends BaseDao {
 	 */
 	public PaginationSupport<Entry> findPageByCriteria(final DetachedCriteria detachedCriteria, final int pageSize, final int startIndex);
 	
+	/**
+	 * 保存Entry
+	 * @param entry
+	 * @return entry's Id
+	 * @author <a href="mailto:rory.cn@gmail.com">somebody</a>
+	 */
+	public Serializable saveEntry(Entry entry);
 }
