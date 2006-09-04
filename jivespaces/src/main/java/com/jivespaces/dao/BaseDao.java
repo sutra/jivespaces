@@ -19,9 +19,6 @@
  **/
 package com.jivespaces.dao;
 
-import org.hibernate.criterion.DetachedCriteria;
-
-import com.jivespaces.util.PaginationSupport;
 
 /**
  * @author <a href="mailto:rory.cn@gmail.com">somebody</a>
@@ -29,13 +26,5 @@ import com.jivespaces.util.PaginationSupport;
  * @version $Id BaseDao.java$
  */
 public interface BaseDao {
-	/**
-	 * 
-	 * @param detachedCriteria
-	 * @param pageSize
-	 * @param startIndex
-	 * @return
-	 */
-	public PaginationSupport findPageByCriteria(final DetachedCriteria detachedCriteria, final int pageSize, final int startIndex);
 	
 }

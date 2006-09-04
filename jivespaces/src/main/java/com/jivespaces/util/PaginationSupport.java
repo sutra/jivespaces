@@ -28,7 +28,7 @@ package com.jivespaces.util;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PaginationSupport {
+public class PaginationSupport<T> {
 
 	// ---------------------------------------------------------
 	// static variables
@@ -63,7 +63,7 @@ public class PaginationSupport {
 	private int totalCount;
 
 	// 返回结果集
-	private List items = new LinkedList();
+	private List<T> items = new LinkedList<T>();
 
 	// index 为索引页位置, 可以选择 "center", "forward", "half-full"
 	private String index = DEFALUT_INDEX;
@@ -74,31 +74,31 @@ public class PaginationSupport {
 		setMaxIndexPages(DEFAULT_MAX_INDEX_PAGES);
 		setTotalCount(0);
 		setOffset(0);
-		setItems(new LinkedList());
+		setItems(new LinkedList<T>());
 	}
 
-	public PaginationSupport(List items, int totalCount) {
+	public PaginationSupport(List<T> items, int totalCount) {
 		setMaxPageItems(DEFAULT_MAX_PAGE_ITEMS);
 		setTotalCount(totalCount);
 		setItems(items);
 		setOffset(PagerFacade.getOffset());
 	}
 
-	public PaginationSupport(List items, int totalCount, int offset) {
+	public PaginationSupport(List<T> items, int totalCount, int offset) {
 		setMaxPageItems(DEFAULT_MAX_PAGE_ITEMS);
 		setTotalCount(totalCount);
 		setItems(items);
 		setOffset(offset);
 	}
 
-	public PaginationSupport(List items, int totalCount, int offset, int maxPageItems) {
+	public PaginationSupport(List<T> items, int totalCount, int offset, int maxPageItems) {
 		setMaxPageItems(maxPageItems);
 		setTotalCount(totalCount);
 		setItems(items);
 		setOffset(offset);
 	}
 
-	public PaginationSupport(List items, int totalCount, int offset, int maxPageItems, int maxIndexPages, String index) {
+	public PaginationSupport(List<T> items, int totalCount, int offset, int maxPageItems, int maxIndexPages, String index) {
 		setMaxPageItems(maxPageItems);
 		setTotalCount(totalCount);
 		setItems(items);
@@ -107,13 +107,13 @@ public class PaginationSupport {
 		setIndex(index);
 	}
 
-	public List getItems() {
+	public List<T> getItems() {
 		return items;
 	}
 
-	public void setItems(List items) {
+	public void setItems(List<T> items) {
 		if (items == null) {
-			this.items = new LinkedList();
+			this.items = new LinkedList<T>();
 		} else {
 			this.items = items;
 		}
