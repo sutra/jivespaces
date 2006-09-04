@@ -117,6 +117,13 @@ public class JiveSpacesFacadeImpl implements JiveSpacesFacade {
 	
 
 	/* (non-Javadoc)
+	 * @see com.jivespaces.JiveSpacesFacade#saveEntry(com.jivespaces.domain.Entry)
+	 */
+	public void saveEntry(Entry entry) {
+		this.entryDao.saveEntry(entry);
+	}
+	
+	/* (non-Javadoc)
 	 * @see com.jivespaces.JiveSpacesFacade#getUserPage(com.jivespaces.domain.User, int, int, java.lang.String, java.lang.Boolean)
 	 */
 	public PaginationSupport<User> getUserPage(User user, int pageSize, int startIndex, String order, Boolean isDesc) {

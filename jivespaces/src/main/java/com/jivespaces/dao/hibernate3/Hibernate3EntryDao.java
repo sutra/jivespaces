@@ -3,6 +3,8 @@
  */
 package com.jivespaces.dao.hibernate3;
 
+import java.io.Serializable;
+
 import com.jivespaces.dao.EntryDao;
 import com.jivespaces.domain.Entry;
 
@@ -21,5 +23,12 @@ public class Hibernate3EntryDao extends BaseHibernateEntityDao<Entry> implements
 	public Entry getEntry(String id) {
 		return get(id);
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see com.jivespaces.dao.EntryDao#saveEntry(com.jivespaces.domain.Entry)
+	 */
+	public Serializable saveEntry(Entry entry) {
+		getHibernateTemplate().saveOrUpdate(entry);
+		return entry.getId();
+	}
 }

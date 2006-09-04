@@ -76,6 +76,13 @@ public interface JiveSpacesFacade {
 	Category getCategory(String id);
 	
 	/**
+	 * 保存Entry
+	 * @param entry
+	 * @author <a href="mailto:rory.cn@gmail.com">somebody</a>
+	 */
+	public void saveEntry(Entry entry);
+	
+	/**
 	 * 根据条件分页查询用户
 	 * @param user　查询条件
 	 * @param pageSize　分页大小
