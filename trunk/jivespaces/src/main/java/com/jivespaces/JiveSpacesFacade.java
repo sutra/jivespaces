@@ -80,7 +80,7 @@ public interface JiveSpacesFacade {
 	 * @param entry
 	 * @author <a href="mailto:rory.cn@gmail.com">somebody</a>
 	 */
-	public void saveEntry(Entry entry);
+	public void saveOrUpdate(Entry entry);
 	
 	/**
 	 * 删除Entry
