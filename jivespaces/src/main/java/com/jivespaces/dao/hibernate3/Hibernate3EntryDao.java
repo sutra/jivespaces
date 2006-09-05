@@ -31,4 +31,11 @@ public class Hibernate3EntryDao extends BaseHibernateEntityDao<Entry> implements
 		getHibernateTemplate().saveOrUpdate(entry);
 		return entry.getId();
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.jivespaces.dao.EntryDao#removeEntry(com.jivespaces.domain.Entry)
+	 */
+	public void removeEntry(Entry entry) {
+		getHibernateTemplate().delete(entry);
+	}
 }
