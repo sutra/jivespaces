@@ -33,4 +33,11 @@ public interface EntryDao extends BaseDao {
 	 * @author <a href="mailto:rory.cn@gmail.com">somebody</a>
 	 */
 	public Serializable saveEntry(Entry entry);
+	
+	/**
+	 * 删除Entry
+	 * @param entry
+	 * @author <a href="mailto:rory.cn@gmail.com">somebody</a>
+	 */
+	public void removeEntry(Entry entry);
 }

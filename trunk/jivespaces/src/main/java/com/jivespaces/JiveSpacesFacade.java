@@ -83,6 +83,13 @@ public interface JiveSpacesFacade {
 	public void saveEntry(Entry entry);
 	
 	/**
+	 * 删除Entry
+	 * @param id
+	 * @author <a href="mailto:rory.cn@gmail.com">somebody</a>
+	 */
+	public void removeEntry(String id);
+	
+	/**
 	 * 根据条件分页查询用户
 	 * @param user　查询条件
 	 * @param pageSize　分页大小

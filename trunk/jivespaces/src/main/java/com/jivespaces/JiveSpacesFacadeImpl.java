@@ -10,6 +10,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.dao.DataAccessException;
 import org.springframework.util.Assert;
 
 import com.jivespaces.dao.CategoryDao;
@@ -67,7 +68,11 @@ public class JiveSpacesFacadeImpl implements JiveSpacesFacade {
 	 * @see com.jivespaces.JiveSpacesFacade#getEntry(java.lang.String)
 	 */
 	public Entry getEntry(String id) {
-		return this.entryDao.getEntry(id);
+		try {
+			return this.entryDao.getEntry(id);
+		} catch (DataAccessException e) {
+			return null;
+		}
 	}
 
 	/*
@@ -121,6 +126,13 @@ public class JiveSpacesFacadeImpl implements JiveSpacesFacade {
 	 */
 	public void saveEntry(Entry entry) {
 		this.entryDao.saveEntry(entry);
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.jivespaces.JiveSpacesFacade#removeEntry(java.lang.String)
+	 */
+	public void removeEntry(String id) {
+		this.entryDao.removeEntry(this.entryDao.getEntry(id));
 	}
 	
 	/* (non-Javadoc)

@@ -35,6 +35,13 @@ public class JiveSpacesFacadeTest extends AbstractTestBean {
 		entry.setTitle("JiveSpaces's Entry");
 		entry.setContent("This is the JiveSpaces's entry");
 		jiveSpacesFacade.saveEntry(entry);
+		String id = entry.getId();
+		Entry saved = jiveSpacesFacade.getEntry(id);
+		assertEquals(saved.getTitle(), "JiveSpaces's Entry");
+		
+		jiveSpacesFacade.removeEntry(id);
+		
+		assertNull(jiveSpacesFacade.getEntry(id));
 		
 	}
 }
