@@ -32,7 +32,7 @@ public interface EntryDao extends BaseDao {
 	 * @return entry's Id
 	 * @author <a href="mailto:rory.cn@gmail.com">somebody</a>
 	 */
-	public Serializable saveEntry(Entry entry);
+	public Serializable saveOrUpdate(Entry entry);
 	
 	/**
 	 * 删除Entry

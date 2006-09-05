@@ -24,10 +24,11 @@ public class Hibernate3EntryDao extends BaseHibernateEntityDao<Entry> implements
 		return get(id);
 	}
 	
+
 	/* (non-Javadoc)
-	 * @see com.jivespaces.dao.EntryDao#saveEntry(com.jivespaces.domain.Entry)
+	 * @see com.jivespaces.dao.EntryDao#saveOrUpdate(com.jivespaces.domain.Entry)
 	 */
-	public Serializable saveEntry(Entry entry) {
+	public Serializable saveOrUpdate(Entry entry) {
 		getHibernateTemplate().saveOrUpdate(entry);
 		return entry.getId();
 	}

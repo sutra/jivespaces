@@ -121,11 +121,12 @@ public class JiveSpacesFacadeImpl implements JiveSpacesFacade {
 	}
 	
 
+
 	/* (non-Javadoc)
-	 * @see com.jivespaces.JiveSpacesFacade#saveEntry(com.jivespaces.domain.Entry)
+	 * @see com.jivespaces.JiveSpacesFacade#saveOrUpdate(com.jivespaces.domain.Entry)
 	 */
-	public void saveEntry(Entry entry) {
-		this.entryDao.saveEntry(entry);
+	public void saveOrUpdate(Entry entry) {
+		this.entryDao.saveOrUpdate(entry);
 	}
 	
 	/* (non-Javadoc)
